@@ -52,21 +52,23 @@ export default function Sidebar() {
 
   return (
     <>
-      <nav className="flex md:hidden sticky items-center justify-between h-[71px] top-0 right-0 left-0 px-6">
+      <nav
+        className={`flex md:hidden sticky items-center justify-between h-[71px] top-0 right-0 left-0 px-6 bg-white ${
+          !isOpen && "border-b"
+        }`}
+      >
         <div className="flex items-center gap-4">
           {/* <LogoIcon className="h-9 w-7" /> */}
           <p className="text-2xl font-bold">Dashboard</p>
         </div>
-        {isOpen ? (
-          <X onClick={handleIsOpen} />
-        ) : (
-          <Menu onClick={handleIsOpen} />
-        )}
+        <Button onClick={handleIsOpen} variant={"ghost"} size={"icon"}>
+          {isOpen ? <X /> : <Menu />}
+        </Button>
       </nav>
       <nav
         className={`${
           isOpen ? "flex fixed top-[71px] bottom-0 w-full" : "hidden"
-        } w-80 z-50 shrink-0 flex-col justify-between md:flex overflow-y-auto border-r`}
+        } w-80 z-50 shrink-0 flex-col justify-between md:flex overflow-y-auto border-r dark:border-[#242424] bg-white dark:bg-black`}
       >
         <div className="flex flex-col gap-6 pt-2 md:pt-8">
           <div className="hidden md:flex items-center gap-4 pr-5 pl-6">
@@ -81,7 +83,7 @@ export default function Sidebar() {
               <div key={x} className="flex flex-col gap-2">
                 {item.subItems ? (
                   <div
-                    className="flex gap-3 pt-2 pr-3 pb-2 pl-3 hover:bg-gray-200 rounded-md cursor-pointer"
+                    className="flex gap-3 pt-2 pr-3 pb-2 pl-3 hover:bg-muted/50 rounded-md cursor-pointer"
                     onClick={() => item.subItems && handleOpen(item.name)}
                   >
                     {item.icon}
@@ -94,7 +96,7 @@ export default function Sidebar() {
                   <Link
                     href={item.link}
                     onClick={handleClose}
-                    className="flex gap-3 pt-2 pr-3 pb-2 pl-3 hover:bg-gray-200 rounded-md"
+                    className="flex gap-3 pt-2 pr-3 pb-2 pl-3 hover:bg-muted/50 rounded-md"
                   >
                     {item.icon}
                     <p className="font-semibold">{item.name}</p>
@@ -109,12 +111,12 @@ export default function Sidebar() {
                             key={y}
                             href={subItem.link}
                             onClick={handleClose}
-                            className="pt-2 pr-3 pb-2 pl-11 hover:bg-gray-200 rounded-md"
+                            className="pt-2 pr-3 pb-2 pl-11 hover:bg-muted/50 rounded-md"
                           >
                             <p>{subItem.name}</p>
                           </Link>
                         ) : (
-                          <p className="pt-2 pr-3 pb-2 pl-11 text-gray-500 rounded-md cursor-default">
+                          <p className="pt-2 pr-3 pb-2 pl-11 text-muted-foreground rounded-md cursor-default">
                             {subItem.name}
                           </p>
                         )}

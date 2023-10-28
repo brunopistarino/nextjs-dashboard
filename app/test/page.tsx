@@ -62,16 +62,16 @@ export default async function Page() {
     <>
       <div className="flex flex-col gap-4">
         <h1 className="text-3xl font-semibold">Pagos pendientes</h1>
-        <div className="flex gap-6">
-          <div className="flex flex-col w-full p-6 rounded-md border gap-2 bg-white">
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="flex flex-col w-full p-6 rounded-md border gap-2 bg-background">
             <p>Clientes</p>
             <p className="text-4xl font-semibold">8</p>
           </div>
-          <div className="flex flex-col w-full p-6 rounded-md border gap-2 bg-white">
+          <div className="flex flex-col w-full p-6 rounded-md border gap-2 bg-background">
             <p>Pagos</p>
             <p className="text-4xl font-semibold">17</p>
           </div>
-          <div className="flex flex-col w-full p-6 rounded-md border gap-2 bg-white">
+          <div className="flex flex-col w-full p-6 rounded-md border gap-2 bg-background">
             <p>Monto total</p>
             <p className="text-4xl font-semibold">$1470.50</p>
           </div>
@@ -81,7 +81,7 @@ export default async function Page() {
         <div className="flex gap-3">
           <Input placeholder="Buscar" />
           <Tabs defaultValue="account">
-            <TabsList className="bg-white border">
+            <TabsList className="bg-background border">
               <TabsTrigger value="account">
                 <LayoutGrid size={20} />
               </TabsTrigger>

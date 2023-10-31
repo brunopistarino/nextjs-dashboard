@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dialog";
 import { ChevronDown, ChevronUp, Menu, X, User2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { ThemeButton } from "@/components/theme-button";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
@@ -53,7 +54,7 @@ export default function Sidebar() {
   return (
     <>
       <nav
-        className={`flex md:hidden sticky items-center justify-between h-[71px] top-0 right-0 left-0 px-6 bg-white ${
+        className={`flex md:hidden sticky items-center justify-between h-[71px] top-0 right-0 left-0 px-6 bg-white dark:bg-black ${
           !isOpen && "border-b"
         }`}
       >
@@ -128,7 +129,10 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
-        <div className="px-2 py-6">
+        <div className="flex justify-center mb-8">
+          <ThemeButton />
+        </div>
+        {/* <div className="px-2 py-6">
           <UserDialog>
             <div className="flex gap-3 items-center hover:bg-gray-200 rounded-md p-2 cursor-pointer">
               <div className="bg-gray-200 w-10 h-10 rounded-full flex place-content-center items-center">
@@ -140,7 +144,7 @@ export default function Sidebar() {
               </div>
             </div>
           </UserDialog>
-        </div>
+        </div> */}
       </nav>
     </>
   );

@@ -27,6 +27,7 @@ import { Plus } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useState } from "react";
 
 const formSchema = z.object({
   username: z
@@ -39,6 +40,7 @@ const formSchema = z.object({
 });
 
 export function NewCustomer() {
+  const [isOpen, setIsOpen] = useState(false);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,26 +54,27 @@ export function NewCustomer() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    setIsOpen(false);
   }
   return (
-    <AlertDialog>
+    <AlertDialog open={isOpen}>
       <AlertDialogTrigger asChild>
-        <Button className="gap-1 px-3 font-semibold">
+        <Button
+          className="gap-1 px-3 font-semibold"
+          onClick={() => setIsOpen(true)}
+        >
           <Plus />
           <p>Nuevo cliente</p>
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Nuevo cliente</AlertDialogTitle>
-          <AlertDialogDescription>
-            {/* This action cannot be undone. This will permanently delete your
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <AlertDialogHeader>
+              <AlertDialogTitle>Nuevo cliente</AlertDialogTitle>
+              <AlertDialogDescription className="space-y-8">
+                {/* This action cannot be undone. This will permanently delete your
             account and remove your data from our servers. */}
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8"
-              >
                 <FormField
                   control={form.control}
                   name="username"
@@ -104,23 +107,22 @@ export function NewCustomer() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit">Submit</Button>
-              </form>
-            </Form>
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-          <Button
-            type="submit"
-            // onClick={() => {
-            //   document.querySelector("form")?.submit();
-            // }}
-          >
-            Submit
-          </Button>
-        </AlertDialogFooter>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel
+                onClick={() => {
+                  setIsOpen(false);
+                  form.reset();
+                }}
+              >
+                Cancel
+              </AlertDialogCancel>
+              {/* <AlertDialogAction>Continue</AlertDialogAction> */}
+              <Button type="submit">Submit</Button>
+            </AlertDialogFooter>
+          </form>
+        </Form>
       </AlertDialogContent>
     </AlertDialog>
   );

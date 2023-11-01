@@ -5,6 +5,7 @@ import {
   Pencil,
   RefreshCcw,
   Search,
+  User2,
   WalletCards,
 } from "lucide-react";
 
@@ -19,6 +20,11 @@ export function getPages() {
       name: "Pagos pendientes",
       icon: <WalletCards />,
       link: "/test",
+    },
+    {
+      name: "Clientes",
+      icon: <User2 />,
+      link: "/clientes",
     },
     {
       name: "Inscripciones",

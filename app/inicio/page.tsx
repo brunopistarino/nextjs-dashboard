@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const formSchema = z.object({
   username: z
@@ -27,6 +28,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function Page() {
   // 1. Define your form.
@@ -45,16 +47,39 @@ export default function Page() {
   }
   return (
     <>
+      <div className="bg-background p-6 rounded-md border flex flex-col gap-5">
+        <div className="flex items-center justify-between">
+          <p className="font-semibold text-lg">Ventas</p>
+          <Button variant="outline">Ver reporte</Button>
+        </div>
+        <Tabs defaultValue="account">
+          <TabsList>
+            <TabsTrigger value="12months">12 meses</TabsTrigger>
+            <TabsTrigger value="3months">3 meses</TabsTrigger>
+            <TabsTrigger value="30days">30 días</TabsTrigger>
+            <TabsTrigger value="7days">7 días</TabsTrigger>
+            <TabsTrigger value="24days">24 horas</TabsTrigger>
+          </TabsList>
+          {/* <TabsContent value="account">
+            Make changes to your account here.
+          </TabsContent> */}
+          <TabsContent value="password">Change your password here.</TabsContent>
+        </Tabs>
+        <img src="/chart.svg" alt="" />
+      </div>
       <div className="flex gap-4">
-        <div className="bg-background p-5 border flex gap-3 rounded-lg w-full">
+        <Link
+          href="/"
+          className="bg-background p-5 border flex gap-3 rounded-lg w-full"
+        >
           <div className="border p-3 rounded-md">
             <Package2 />
           </div>
           <div>
-            <p>Create your first member</p>
-            <p>Add yourself or import from CSV</p>
+            <p className="font-semibold">Agregar un cliente</p>
+            <p className="text-primary/70">Add yourself or import from CSV</p>
           </div>
-        </div>
+        </Link>
         <div className="bg-background p-5 border flex gap-3 rounded-lg w-full">
           <div className="border p-3 rounded-md">
             <Package2 />

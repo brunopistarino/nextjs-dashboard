@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
+import TopSidebar from "@/components/top-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* <TopSidebar /> */}
           <Sidebar />
           <div className="min-h-[100dvh] bg-gray-100 dark:bg-black w-full px-4 md:px-8 overflow-y-auto">
             <main className="flex flex-col max-w-7xl w-full mx-auto gap-8 pt-8 pb-12">

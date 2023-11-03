@@ -15,8 +15,22 @@ export type Payment = {
 
 export const columns: ColumnDef<Payment>[] = [
   {
+    accessorKey: "",
+    header: "Fecha Alta",
+    cell: ({ row }) => {
+      return <span>{new Date().toJSON().slice(0, 10)}</span>;
+    },
+  },
+  {
     accessorKey: "name",
     header: "Nombre",
+  },
+  {
+    accessorKey: "",
+    header: "Celular",
+    cell: ({ row }) => {
+      return <a href="">3401 409416</a>;
+    },
   },
   {
     accessorKey: "status",
@@ -32,7 +46,7 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "amount",
-    header: "Monto a pagar",
+    header: "Saldo",
     cell: ({ row }) => {
       return <span>$ {row.getValue("amount")}</span>;
     },

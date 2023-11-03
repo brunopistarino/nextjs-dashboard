@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Chart from "./chart";
 
 export default function Page() {
   // 1. Define your form.
@@ -65,7 +66,9 @@ export default function Page() {
           </TabsContent> */}
           <TabsContent value="password">Change your password here.</TabsContent>
         </Tabs>
-        <img src="/chart.svg" alt="" />
+        <Chart />
+
+        {/* <img src="/chart.svg" alt="" /> */}
       </div>
       <div className="flex gap-4">
         <Link
@@ -136,6 +139,7 @@ export default function Page() {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <Chart />
     </>
   );
 }

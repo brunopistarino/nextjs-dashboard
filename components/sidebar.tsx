@@ -17,7 +17,7 @@ import {
   DialogFooter,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { ChevronDown, ChevronUp, Menu, X, User2 } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu, X, Settings } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ThemeButton } from "@/components/theme-button";
 
@@ -129,9 +129,16 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
-        <div className="flex justify-center mb-8">
+        <div className="px-4 mb-8">
+          <Button className="gap-2 w-full justify-start" variant={"ghost"}>
+            <Settings />
+            Configuración
+          </Button>
           <ThemeButton />
         </div>
+        {/* <div className="flex justify-center mb-8">
+          <ThemeButton />
+        </div> */}
         {/* <div className="px-2 py-6">
           <UserDialog>
             <div className="flex gap-3 items-center hover:bg-gray-200 rounded-md p-2 cursor-pointer">

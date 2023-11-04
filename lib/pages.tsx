@@ -27,6 +27,11 @@ export function getPages() {
       link: "/clientes",
     },
     {
+      name: "Productos",
+      icon: <User2 />,
+      link: "/productos",
+    },
+    {
       name: "Inscripciones",
       icon: <Pencil />,
       subItems: [

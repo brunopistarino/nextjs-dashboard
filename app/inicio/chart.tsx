@@ -1,62 +1,86 @@
-// Chart.tsx example
-
 "use client";
 
-import { AreaChart, Card, Title } from "@tremor/react";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
-const generateData = () => {
-  let dataset = [];
-  const dates = [
-    "Jun 30",
-    "Jul 01",
-    "Jul 02",
-    "Jul 03",
-    "Jul 04",
-    "Jul 05",
-    "Jul 06",
-    "Jul 07",
-    "Jul 08",
-    "Jul 09",
-    "Jul 10",
-    "Jul 11",
-    "Jul 12",
-    "Jul 13",
-    "Jul 14",
-    "Jul 15",
-    "Jul 16",
-    "Jul 17",
-  ];
-
-  for (let date of dates) {
-    dataset.push({
-      date,
-      "checkout-1": Math.round(150 + Math.random() * 20 - 10),
-      "checkout-2": Math.round(200 + Math.random() * 20 - 10),
-      "checkout-3": Math.round(250 + Math.random() * 20 - 10),
-    });
-  }
-
-  return dataset;
-};
-
-const mockDataset = generateData();
-console.log(mockDataset);
+const data = [
+  {
+    name: "Jan",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Feb",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Mar",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Apr",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "May",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Jun",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Jul",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Aug",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Sep",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Oct",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Nov",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: "Dec",
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+];
 
 export default function Chart() {
   return (
-    <Card className="mt-8">
-      {/* <Title className="mb-2">My admin dashboard</Title> */}
-      <AreaChart
-        className="mt-4 h-80"
-        defaultValue={0}
-        data={mockDataset}
-        categories={["checkout-1", "checkout-2", "checkout-3"]}
-        index="date"
-        colors={["indigo", "fuchsia", "emerald", "neutral"]}
-        allowDecimals={false}
-        yAxisWidth={60}
-        noDataText="No data. Run your first test to get started!"
-      />
-    </Card>
+    <ResponsiveContainer width="100%" height={350}>
+      <BarChart data={data}>
+        <XAxis
+          dataKey="name"
+          stroke="#888888"
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+        />
+        <YAxis
+          stroke="#888888"
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+          tickFormatter={(value) => `$${value}`}
+        />
+        <Tooltip />
+        <Bar dataKey="total" fill="#adfa1d" radius={[4, 4, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }

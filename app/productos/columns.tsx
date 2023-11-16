@@ -1,8 +1,15 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { AlertCircle, CheckCircle2, XCircle } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  MoreHorizontal,
+  XCircle,
+} from "lucide-react";
+import { DataTableRowActions } from "./data-table-row-actions";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -54,29 +61,41 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const status: string = row.getValue("status");
 
-      // return (
-      //   {
-      //     available: "Disponible",
-      //     sold: "Vendido",
-      //     returned: "Devuelto",
-      //   }[status] || null
-      // );
-      // return (
-      //   <Badge variant="outline" className="bg-green-600 text-white border-0">
-      //     {/* <CheckCircle2 /> */}
-      //     {/* <XCircle /> */}
-      //     <AlertCircle />
-      //     Disponible
-      //   </Badge>
-      // );
       return (
-        <div className="flex gap-2">
-          <CheckCircle2 size={15} />
-          {/* <XCircle size={15} /> */}
-          {/* <AlertCircle size={15} /> */}
-          Disponible
+        <div className="flex items-center">
+          {status === "available" && (
+            <>
+              <CheckCircle2 className="mr-2 h-4 w-4 text-muted-foreground" />
+              Disponible
+            </>
+          )}
+          {status === "sold" && (
+            <>
+              <XCircle className="mr-2 h-4 w-4 text-muted-foreground" />
+              Vendido
+            </>
+          )}
+          {status === "returned" && (
+            <>
+              <AlertCircle className="mr-2 h-4 w-4 text-muted-foreground" />
+              Devuelto
+            </>
+          )}
         </div>
       );
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => (
+      // <Button
+      //   variant="ghost"
+      //   className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+      // >
+      //   <MoreHorizontal className="h-4 w-4" />
+      //   <span className="sr-only">Open menu</span>
+      // </Button>
+      <DataTableRowActions row={row} />
+    ),
   },
 ];

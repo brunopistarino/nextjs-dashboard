@@ -30,6 +30,7 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import Chart from "./chart";
+import MoneyChart from "./money-chart";
 
 export default function Page() {
   // 1. Define your form.
@@ -67,6 +68,7 @@ export default function Page() {
           <TabsContent value="password">Change your password here.</TabsContent>
         </Tabs>
         <Chart />
+        <MoneyChart />
 
         {/* <img src="/chart.svg" alt="" /> */}
       </div>
@@ -80,7 +82,9 @@ export default function Page() {
           </div>
           <div>
             <p className="font-semibold">Agregar un cliente</p>
-            <p className="text-primary/70">Add yourself or import from CSV</p>
+            <p className="text-muted-foreground">
+              Add yourself or import from CSV
+            </p>
           </div>
         </Link>
         <div className="bg-background p-5 border flex gap-3 rounded-lg w-full">

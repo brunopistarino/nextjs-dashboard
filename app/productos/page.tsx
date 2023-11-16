@@ -1,5 +1,6 @@
 import { Payment, columns } from "./columns";
 import { DataTable } from "./data-table";
+import { NewProduct } from "./new-product";
 
 async function getData(): Promise<Payment[]> {
   // Fetch data from your API here.
@@ -16,7 +17,7 @@ async function getData(): Promise<Payment[]> {
     },
     {
       id: "2",
-      status: "available",
+      status: "returned",
       date: new Date(),
       category: "Remera",
       description: "Remera de algodón",
@@ -26,7 +27,7 @@ async function getData(): Promise<Payment[]> {
     },
     {
       id: "3",
-      status: "available",
+      status: "sold",
       date: new Date(),
       category: "Remera",
       description: "Remera de algodón",
@@ -72,7 +73,10 @@ export default async function Page() {
 
   return (
     <>
-      <h1 className="font-semibold text-3xl">Productos</h1>
+      <div className="flex justify-between">
+        <h1 className="font-semibold text-3xl">Productos</h1>
+        <NewProduct />
+      </div>
       <DataTable columns={columns} data={data} />
     </>
   );

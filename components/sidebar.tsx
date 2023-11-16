@@ -72,10 +72,18 @@ export default function Sidebar() {
         } w-80 z-50 shrink-0 flex-col justify-between md:flex overflow-y-auto border-r dark:border-[#242424] bg-white dark:bg-black`}
       >
         <div className="flex flex-col gap-6 pt-2 md:pt-8">
-          <div className="hidden md:flex items-center gap-4 pr-5 pl-6">
+          <Link
+            href="/"
+            className="hidden md:flex items-center gap-4 pr-5 pl-6"
+          >
             {/* <LogoIcon className="h-12 w-9" /> */}
-            <p className="text-2xl font-bold">Dashboard</p>
-          </div>
+            {/* <p className="text-2xl font-bold">Dashboard</p> */}
+            <img src="/logo.png" className="h-10" alt="" />
+            <p className="text-2xl">
+              <span>EL</span>
+              <span className="font-bold">ROPERO</span>
+            </p>
+          </Link>
           <div className="px-6">
             <Input placeholder="Buscar" />
           </div>
